@@ -1,5 +1,5 @@
 {
-  description = "Ambientes essenciais de desenvolvimento do Sr. Menezes";
+  description = "Ambientes essenciais de desenvolvimento";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
@@ -22,3 +22,4 @@
         };
       });
 }
+
