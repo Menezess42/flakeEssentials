@@ -19,6 +19,7 @@ pkgs.mkShell {
                 python311Packages.isort
                 # Libs for the book
                 python311Packages.matplotlib
+                python311Packages.seaborn
                 python311Packages.numpy
   ];
   shellHook = ''
