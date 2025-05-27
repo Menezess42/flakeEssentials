@@ -1,5 +1,24 @@
-{ pkgs }:
+{ pkgs ? import <nixpkgs> {} }:
+#{ pkgs }:
+let
+  lib = pkgs.lib;
 
+  disableAllTests = self: super:
+    let
+      overrideTests = pkg: pkg.overrideAttrs (_: {
+        # desliga both doCheck e checkPhase
+        doCheck    = false;
+        checkPhase = ''
+          echo ">>> testes desativados <<<"
+        '';
+      });
+    in {
+      # substitui todo o conjunto python3Packages
+      python3Packages = super.python3Packages.override {
+        packageOverrides = ps: lib.mapAttrs (_: pkg: overrideTests pkg) ps;
+      };
+    };
+in
 pkgs.mkShell {
   name = "essentials-python-env";
   buildInputs = with pkgs; [
@@ -22,6 +41,7 @@ pkgs.mkShell {
                 python311Packages.seaborn
                 python311Packages.numpy
   ];
+  overlays = [ disableAllTests ];
   shellHook = ''
     echo "Ambiente Python Essencial carregado!"
   '';
