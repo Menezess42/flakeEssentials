@@ -1,5 +1,5 @@
 {
-  description = "Ambientes essenciais de desenvolvimento";
+  description = "Ambientes essenciais de desenvolvimento: PS: TESTING ONNERSHIP";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
