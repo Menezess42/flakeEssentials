@@ -1,6 +1,7 @@
 { pkgs ? import <nixpkgs> {} }:
 pkgs.mkShell {
   name = "essentials-python-env";
+  checkPhase="";
   buildInputs = with pkgs; [
                 python311
                 python311Packages.pip
@@ -21,7 +22,6 @@ pkgs.mkShell {
                 python311Packages.seaborn
                 python311Packages.numpy
   ];
-  checkPhase="";
   shellHook = ''
     echo "Ambiente Python Essencial carregado!"
   '';
