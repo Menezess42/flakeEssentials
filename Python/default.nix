@@ -1,7 +1,6 @@
 {pkgs}:
 pkgs.mkShell {
   name = "essentials-python-env";
-  # checkPhase="";
   buildInputs = with pkgs; [
                 python311
                 python311Packages.pip
