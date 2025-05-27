@@ -1,11 +1,15 @@
 { pkgs ? import <nixpkgs> {
-    overlays = [
+overlays = [
       (final: prev: {
         python311 = prev.python311.override {
           packageOverrides = pyself: pysuper: {
             buildPythonPackage = args: pysuper.buildPythonPackage (args // {
               doCheck = false;
-              checkPhase = "echo 'checkPhase desativado para buildPythonPackage.'";
+              checkInputs = [];
+              nativeCheckInputs = [];
+              checkPhase = ''
+                echo "[checkPhase] Skipping tests (disabled by overlay)."
+              '';
             });
           };
         };
@@ -13,7 +17,6 @@
     ];
   }
 }:
-
 pkgs.mkShell {
   name = "essentials-python-env";
 
