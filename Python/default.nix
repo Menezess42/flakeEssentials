@@ -2,7 +2,7 @@
 pkgs.mkShell {
   name = "essentials-python-env";
   buildInputs = with pkgs; [
-                python311.checkPhase
+                python311
                 python311Packages.pip
                 # IDE Like Features
                 pyright
