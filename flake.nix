@@ -8,7 +8,7 @@
   outputs = { self, nixpkgs, flake-utils }:
     flake-utils.lib.eachDefaultSystem (system:
       let
-        pkgs = import nixpkgs { inherit system; };
+        pkgs = import nixpkgs { inherit system;  config.doCheck = false;};
         pythonShell = import ./Python/default.nix { inherit pkgs; };
         # goShell = import ./Go/default.nix { inherit pkgs; };
         # jsShell = import ./JS/default.nix { inherit pkgs; };
