@@ -11,13 +11,13 @@
         pkgs = import nixpkgs { inherit system;  config.doCheck = false;};
         pythonShell = import ./Python/default.nix { inherit pkgs; };
         # goShell = import ./Go/default.nix { inherit pkgs; };
-        # jsShell = import ./JS/default.nix { inherit pkgs; };
+        jsShell = import ./Js/default.nix { inherit pkgs; };
       in
       {
         devShells = {
           python = pythonShell;
           # go = goShell;
-          # js = jsShell;
+          js = jsShell;
         };
       });
 }
