@@ -10,22 +10,26 @@ pkgs.mkShell {
   prettierd
   typescript-language-server
   typescript
-                # python311
-                # python311Packages.pip
-                # # IDE Like Features
-                # pyright
-                # python311Packages.pip
-                # python311Packages.jedi
-                # python311Packages.jedi-language-server
-                # python311Packages.black
-                # python311Packages.flake8
-                # python311Packages.sentinel
-                # python311Packages.python-lsp-server
-                # python311Packages.virtualenv
-                # python311Packages.pyflakes  # Linter Pyflakes
-                # python311Packages.isort
+  typescript-language-server
+  typescript
+  vscode-langservers-extracted
+  tailwindcss-language-server
+# python311
+# python311Packages.pip
+# # IDE Like Features
+# pyright
+# python311Packages.pip
+# python311Packages.jedi
+# python311Packages.jedi-language-server
+# python311Packages.black
+# python311Packages.flake8
+# python311Packages.sentinel
+# python311Packages.python-lsp-server
+# python311Packages.virtualenv
+# python311Packages.pyflakes  # Linter Pyflakes
+# python311Packages.isort
   ];
   shellHook = ''
-    echo "Ambiente JS Essencial carregado!"
-  '';
+      echo "Ambiente JS Essencial carregado!"
+      '';
 }
