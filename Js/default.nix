@@ -8,6 +8,8 @@ pkgs.mkShell {
   nodejs
   nodePackages.prettier
   prettierd
+  typescript-language-server
+  typescript
                 # python311
                 # python311Packages.pip
                 # # IDE Like Features
