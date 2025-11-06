@@ -7,16 +7,16 @@ pkgs.mkShell {
                 python311Packages.pip
                 # IDE Like Features
                 pyright
-                python311Packages.pip
-                python311Packages.jedi
-                python311Packages.jedi-language-server
-                python311Packages.black
-                python311Packages.flake8
-                python311Packages.sentinel
-                python311Packages.python-lsp-server
-                python311Packages.virtualenv
-                python311Packages.pyflakes  # Linter Pyflakes
-                python311Packages.isort
+                python313Packages.pip
+                python313Packages.jedi
+                python313Packages.jedi-language-server
+                python313Packages.black
+                python313Packages.flake8
+                python313Packages.sentinel
+                python313Packages.python-lsp-server
+                python313Packages.virtualenv
+                python313Packages.pyflakes  # Linter Pyflakes
+                python313Packages.isort
   ];
   shellHook = ''
     echo "Ambiente Python Essencial carregado!"
