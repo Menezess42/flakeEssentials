@@ -1,6 +1,5 @@
 { pkgs }:
 let
-
 # módulo que será reutilizável por outros flakes
 pythonModule = {
     buildInputs = with pkgs; [

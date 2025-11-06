@@ -1,6 +1,10 @@
 { pkgs }:
 
 let
+    pkgsUnfree = import pkgs.path {
+    inherit (pkgs) system;
+    config.allowUnfree = true;
+    };
   python = pkgs.python313;
 in
 let
