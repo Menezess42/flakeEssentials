@@ -1,58 +1,52 @@
 { pkgs }:
 let
-  python = pkgs.python313;
 
-  # módulo que será reutilizável por outros flakes
-  pythonModule = {
+# módulo que será reutilizável por outros flakes
+pythonModule = {
     buildInputs = with pkgs; [
-      python
-      python.pythonPackages.pip
-      pkgs.pyright
-      python.pythonPackages.jedi
-      python.pythonPackages.black
-      # ... outras libs comuns
+        python311
+            python311Packages.pip
+# IDE Like Features
+            pyright
+            python313Packages.pip
+            python313Packages.jedi
+            python313Packages.jedi-language-server
+            python313Packages.black
+            python313Packages.flake8
+            python313Packages.sentinel
+            python313Packages.python-lsp-server
+            python313Packages.virtualenv
+            python313Packages.pyflakes  # Linter Pyflakes
+            python313Packages.isort
+# ... outras libs comuns
     ];
 
     shellHook = ''
-      echo "Ambiente Python Essencial carregado!"
-    '';
+        echo "Ambiente Python Essencial carregado!"
+        '';
 
     env = {
-      # se precisar variáveis compartilhadas
-      PYTHONNOUSERSITE = "1";
+# se precisar variáveis compartilhadas
+        PYTHONNOUSERSITE = "1";
     };
-  };
+};
 
-  # shell pronto (compatibilidade backward)
-  pythonShell = pkgs.mkShell {
+# shell pronto (compatibilidade backward)
+pythonShell = pkgs.mkShell {
     name = "essentials-python-env";
     buildInputs = pythonModule.buildInputs;
     shellHook = pythonModule.shellHook;
-  };
+};
 in
 {
-  module = pythonModule;
-  shell  = pythonShell;
+    module = pythonModule;
+    shell  = pythonShell;
 }
 # {pkgs}:
 # pkgs.mkShell {
 #   name = "essentials-python-env";
 #   config.doCheck=false;
 #   buildInputs = with pkgs; [
-#                 python311
-#                 python311Packages.pip
-#                 # IDE Like Features
-#                 pyright
-#                 python313Packages.pip
-#                 python313Packages.jedi
-#                 python313Packages.jedi-language-server
-#                 python313Packages.black
-#                 python313Packages.flake8
-#                 python313Packages.sentinel
-#                 python313Packages.python-lsp-server
-#                 python313Packages.virtualenv
-#                 python313Packages.pyflakes  # Linter Pyflakes
-#                 python313Packages.isort
 #   ];
 #   shellHook = ''
 #     echo "Ambiente Python Essencial carregado!"
