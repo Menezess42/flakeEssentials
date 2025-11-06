@@ -7,7 +7,7 @@ let
   mlModule = {
     buildInputs = with pkgs; [
       (python.withPackages (ps: [
-        ps.pytorch-bin
+        ps.torch-bin
         ps.setuptools
       ]))
       cudaPackages.cudatoolkit
