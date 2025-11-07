@@ -14,7 +14,7 @@ let
       (python.withPackages (ps: [
         ps.torch-bin   # PyTorch com CUDA já incluído
         ps.setuptools
-        ps.torchvision
+        ps.torchvision-bin
       ]))
 
       pkgsUnfree.cudaPackages.cudatoolkit
