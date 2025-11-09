@@ -13,8 +13,8 @@ let
     buildInputs = [
       (python.withPackages (ps: [
         ps.torch-bin   # PyTorch com CUDA já incluído
-        ps.setuptools
         ps.torchvision-bin
+        ps.setuptools
       ]))
 
       pkgsUnfree.cudaPackages.cudatoolkit
