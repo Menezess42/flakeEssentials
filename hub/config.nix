@@ -7,7 +7,7 @@
 
 {
   # JavaScript/Node.js development environment
-  js = false;
+  js = true;
 
   # Python base environment (without ML dependencies)
   pythonBase = false;

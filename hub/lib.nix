@@ -5,7 +5,6 @@
 
 { pkgs, lib }:
 let
-  # Constants - single source of truth
   constants = {
     gcrootDir = "/nix/var/nix/gcroots/flakeEssentials";
     gcrootPrefix = "essential";
