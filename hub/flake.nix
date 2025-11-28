@@ -12,20 +12,16 @@
       let
         pkgs = import nixpkgs { inherit system; };
         
-        # Import the clean interface
         config = import ./config.nix;
         
-        # Import pure library functions
         lib = import ./lib.nix { inherit pkgs; lib = pkgs.lib; };
         
-        # Core logic - pure functional pipeline
         mappings = lib.essentialMappings essentials system;
         selectedShells = lib.selectShells config mappings;
         allInputs = lib.collectInputs selectedShells;
         statusMessage = lib.generateStatusMessage config;
         anchorCommands = lib.generateAnchorCommands allInputs;
 
-        # Scripts - the only impure part (side effects)
         anchorScript = pkgs.writeShellScriptBin "anchor-essentials" ''
           set -e
           
@@ -40,10 +36,8 @@
             exit 1
           fi
           
-          # Clear old roots
           sudo rm -f "${lib.constants.gcrootDir}"/*
           
-          # Create new roots
           echo "Creating persistent GC roots..."
           ${anchorCommands}
           
@@ -106,7 +100,6 @@
 
       in
       {
-        # Packages for composition
         packages = {
           default = pkgs.buildEnv {
             name = "flakeEssentials-circuit-breaker";
@@ -119,33 +112,27 @@
           status = statusScript;
         };
 
-        # User-friendly apps
         apps = {
-          # Main action: protect essentials from GC
           anchor = {
             type = "app";
             program = "${anchorScript}/bin/anchor-essentials";
           };
           
-          # Remove protection (allow GC to clean)
           release = {
             type = "app";
             program = "${releaseScript}/bin/release-essentials";
           };
           
-          # Check current status
           status = {
             type = "app";
             program = "${statusScript}/bin/status-essentials";
           };
           
-          # Aliases for convenience
           default = self.apps.${system}.status;
           on = self.apps.${system}.anchor;
           off = self.apps.${system}.release;
         };
 
-        # Development shell
         devShells.default = pkgs.mkShell {
           name = "flakeEssentials-circuit-breaker-shell";
           
