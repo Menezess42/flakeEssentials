@@ -17,6 +17,7 @@ pythonModule = {
             python313Packages.virtualenv
             python313Packages.pyflakes  # Linter Pyflakes
             python313Packages.isort
+            python313Packages.debugpy
 # ... outras libs comuns
     ];
 

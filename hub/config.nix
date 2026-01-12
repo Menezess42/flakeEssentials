@@ -1,5 +1,5 @@
 {
-  js = true;
+  js = false;
 
   pythonBase = false;
 
